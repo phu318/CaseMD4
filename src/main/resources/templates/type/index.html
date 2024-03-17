@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>List </title>
+</head>
+<body>
+<h3>Type</h3>
+<p>
+    <a th:href="@{/type/create}">
+        Add new type
+    </a>
+</p>
+<table border="1px" id="tasks">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="t,tStatus : ${type}">
+        <td th:text="${tStatus.count}"></td>
+        <td th:text="${t.getName()}"></td>
+        <td><a th:href="@{/type/update/{id}(id=${t.getId()})}">Update</a></td>
+        <td><a th:href="@{/type/delete/{id}(id=${t.getId()})}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:fragment="footer">
+    &copy; 2024 CODEGYM HUE
+</footer>
+</body>
+</html>
